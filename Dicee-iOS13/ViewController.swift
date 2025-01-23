@@ -9,12 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    // IBOutlet allows me to reference a UI element
+    @IBOutlet weak var diceImageView1: UIImageView!
+    @IBOutlet weak var diceImageView2: UIImageView!
+    
+    func changeDiceOneImageTo(image: String) {
+        diceImageView1.image = UIImage(imageLiteralResourceName: image)
+    }
+    
+    func changeDiceTwoImageTo(image: String) {
+        diceImageView2.image = UIImage(imageLiteralResourceName: image)
     }
 
-
+    @IBAction func rollButtonPressed(_ sender: UIButton) {
+        let diceArray = [
+            UIImage(imageLiteralResourceName: "DiceOne"), UIImage(imageLiteralResourceName: "DiceTwo"), UIImage(imageLiteralResourceName: "DiceThree"), UIImage(imageLiteralResourceName: "DiceFour"), UIImage(imageLiteralResourceName: "DiceFive"), UIImage(imageLiteralResourceName: "DiceSix")
+        ]
+        diceImageView1.image = diceArray.randomElement()
+        diceImageView2.image = diceArray.randomElement()
+    }
+    
 }
 
